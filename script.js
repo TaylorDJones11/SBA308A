@@ -9,23 +9,62 @@ searchBtn.addEventListener('click', async () => {
     let finalURL = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
     const res = await fetch(finalURL);
     const countryData = await res.json();
-    console.log(countryData);
-    console.log(countryData[0]);
-    console.log(countryData[0].capital);
-    console.log(countryData[0].flags.svg);
-    console.log(countryData[0].name.common);
-    console.log(countryData[0].continents[0]);
-    console.log(Object.keys(countryData[0].currencies)[0]);
-    console.log(
-      countryData[0].currencies[Object.keys(countryData[0].currencies)].name
-    );
-    console.log(
-      Object.values(countryData[0].languages).toString().split(',').join(', ')
-    );
+
     result.innerHTML = `
   <img src="${countryData[0].flags.svg}" class="flag-img">
+    <h2>${countryData[0].name.common}</h2>
+        <div class="wrapper">
+            <div class="data-wrapper">
+                <h4>Capital:</h4>
+                <span>${countryData[0].capital[0]}</span>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="data-wrapper">
+                <h4>Continent:</h4>
+                <span>${countryData[0].continents[0]}</span>
+            </div>
+        </div>
+         <div class="wrapper">
+            <div class="data-wrapper">
+                <h4>Population:</h4>
+                <span>${countryData[0].population}</span>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="data-wrapper">
+                <h4>Currency:</h4>
+                <span>${
+                  countryData[0].currencies[
+                    Object.keys(countryData[0].currencies)
+                  ].name
+                } - ${Object.keys(countryData[0].currencies)[0]}  </span>
+            </div>
+        </div>
+         <div class="wrapper">
+            <div class="data-wrapper">
+                <h4>Common Languages:</h4>
+                <span>${Object.values(countryData[0].languages)
+                  .toString()
+                  .split(',')
+                  .join(', ')}</span>
+            </div>
+        </div>
+
+
+
 `;
   } catch (error) {
-    console.log(error);
+    if (countryName.length === 0) {
+      result.innerHTML = `
+        <h3>The input field cannot be empty</h3>
+        `;
+    } else {
+      result.innerHTML = `
+        <h3>Please enter a valid country name.</h3>
+        `;
+    }
   }
+
+  countryName = '';
 });
