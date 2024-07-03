@@ -2,7 +2,8 @@
 
 Welcome to the Country Guide App! This application allows users to search for a specific country and view detailed information about it using data from the [REST Countries API](https://restcountries.com/).
 
-![CountryGuide](https://github.com/TaylorDJones11/SBA308A/assets/72883059/55a56b9c-d569-4113-afb4-e05435bcba67)
+
+![CountryGuide](https://github.com/TaylorDJones11/SBA308A/assets/72883059/5be39f48-a538-4c65-ab7d-40174a6946cb)
 
 
 ## Features
